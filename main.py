@@ -396,23 +396,24 @@ caption = (
     f"🌷 ᴛᴀᴘ {help_text} ғᴏʀ ғᴜʟʟ ᴄᴏᴍᴍᴀɴᴅ ʟɪsᴛ 💕"
 )
     buttons = [
-        [
-            InlineKeyboardButton(f"➕ {add_me_text}", url=f"{BOT_LINK}?startgroup=true"),
-            InlineKeyboardButton(f"📢 {updates_text}", url=updates_channel)
-        ],
-        [
-            InlineKeyboardButton(f"💬 {support_text}", url=support_group),
-            InlineKeyboardButton(f"❓ {help_text}", callback_data="show_help")
-        ]
+    [
+        InlineKeyboardButton(f"➕ {addme_text}", url=f"{BOT_LINK}?startgroup=true"),
+        InlineKeyboardButton(f"{updates_text}", url=updates_channel)
+    ],
+    [
+        InlineKeyboardButton(f"{support_text}", url=support_group),
+        InlineKeyboardButton(f"❓ {help_text}", callback_data="show_help")
     ]
-    reply_markup = InlineKeyboardMarkup(buttons)
+]
 
-    await message.reply_animation(
-        animation=start_animation,
-        caption=caption,
-        parse_mode=ParseMode.MARKDOWN,
-        reply_markup=reply_markup
-    )
+reply_markup = InlineKeyboardMarkup(buttons)
+
+await message.reply_animation(
+    animation=start_animation,
+    caption=start_caption,
+    parse_mode=ParseMode.MARKDOWN,
+    reply_markup=reply_markup
+)
 
     # Register chat ID for broadcasting silently
     chat_id = message.chat.id
